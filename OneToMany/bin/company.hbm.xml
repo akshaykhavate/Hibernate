@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.akshay.app.onetomany.pgm.UserBean">
+	<class name="Company">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="name" />
+		<property name="loc" />
+		<set name="departments" cascade="all" table="departments">
+			<key column="c_id" />
+			<one-to-many class="Department"/>
+		</set>
+	</class>
+</hibernate-mapping>
