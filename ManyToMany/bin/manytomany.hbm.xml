@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.akshay.app.manytomany.dto">
+	<class name="Passenger">
+		<id name="id">
+			<generator class="increment" />
+		</id>
+		<property name="name" />
+		<property name="dob" />
+
+		<set name="buses" cascade="all" table="Passenger_Bus">
+			<key column="p_id" />
+			<many-to-many class="Bus" column="b_id" />
+		</set>
+	</class>
+
+	<class name="Bus">
+		<id name="id">
+			<generator class="increment" />
+		</id>
+		<property name="name" />
+		<property name="route" />
+
+		<set name="passengers" cascade="all" table="Passenger_Bus" inverse="true">
+			<key column="b_id" />
+			<many-to-many class="Passenger" column="p_id" />
+		</set>
+	</class>
+</hibernate-mapping>

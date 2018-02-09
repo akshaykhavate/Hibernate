@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.hib.inhe.pgm.Bean">
+	<class name="Vehicle" table="Vehicle_new">
+		<id name="id">
+			<generator class="increment" />
+		</id>
+		<property name="model" />
+		<property name="color" />
+	</class>
+
+	<joined-subclass name="Car" extends="Vehicle">
+		<key column="V_id" />
+		<property name="music_system" />
+		<property name="ac" />
+	</joined-subclass>
+
+	<joined-subclass name="Bike" extends="Vehicle">
+		<key column="V_id" />
+		<property name="kicker" />
+		<property name="alloy" />
+	</joined-subclass>
+	
+</hibernate-mapping>

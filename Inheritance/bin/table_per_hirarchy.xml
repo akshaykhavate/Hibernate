@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.hib.inhe.pgm.Bean">
+	<class name="Vehicle">
+		<id name="id">
+			<generator class="increment" />
+		</id>
+		<discriminator column="Type" />
+		<property name="model" />
+		<property name="color" />
+	</class>
+
+	<subclass name="Car" extends="Vehicle" discriminator-value="CAR">
+		<property name="music_system" />
+		<property name="ac" />
+	</subclass>
+
+	<subclass name="Bike" extends="Vehicle" discriminator-value="BIKE">
+		<property name="kicker" />
+		<property name="alloy" />
+	</subclass>
+
+</hibernate-mapping>
